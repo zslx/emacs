@@ -1,4 +1,9 @@
 ;;  -*- mode: lisp  -*-
+;; 2016-05-17 14:05:03 ä¿®æ”¹, ä¸Šä¼  github
+;; å®‰è£…ä¾èµ–
+;; GNU ELPA (M-x list-packages).
+;; js2-mode undo-tree
+
 (if (eq system-type 'gnu/linux)
     (progn
       (setq emacs-online "/home/zsl/online/Dropbox/emacs/")
@@ -15,7 +20,7 @@
 		  (setq emacs-local "~/emacs/"))
 	  )))
 
-;; (defvar emacs-run-name "emacs" "Æô¶¯emacsµÄ¿ÉÖ´ĞĞÎÄ¼şÃû³Æ")
+;; (defvar emacs-run-name "emacs" "å¯åŠ¨emacsçš„å¯æ‰§è¡Œæ–‡ä»¶åç§°")
 ;; (if (eq system-type 'windows-nt)
 ;;     (let ((emacs-run-name "runemacs.exe")
 ;; 	  (emacs-bin-path
@@ -35,7 +40,7 @@
 ;; This is GNU Emacs 24.3.1 (i386-mingw-nt6.1.7601)
 
 ;; load-path exec-path
-;; Ìí¼Óµ½ WindowsµÄ PATH ±äÁ¿£¬¶à¸öÂ·¾¶ÓÃ·ÖºÅ·Ö¸î£¬ "d:/cygwin64/bin"
+;; æ·»åŠ åˆ° Windowsçš„ PATH å˜é‡ï¼Œå¤šä¸ªè·¯å¾„ç”¨åˆ†å·åˆ†å‰²ï¼Œ "d:/cygwin64/bin"
 (if (file-directory-p "c:/cygwin64/bin")
 	(progn
 	  (add-to-list 'exec-path "c:/cygwin64/bin")
@@ -45,9 +50,9 @@
 ;; (directory-files emacs-online)
 (load (concat emacs-online "dircfg.el"))
 (load (concat emacs-online "_emacs"))
-;; ¾­³£±à¼­µÄ·ÅÔÚ UbuntuOne.emacs-online ×Ô¶¯Í¬²½¡£
-;; ²»³£±ä»¯ºÍ²»ĞèÒª¸÷µØÍ¬²½µÄÄÚÈİ·ÅÔÚ emacs-local, ÓĞ¸Ä±äÊ±ÓÃÑ¹ËõÎÄ¼şÍ¨¹ıÍøÅÌ´«µİ¡£
-;; ¼ÓÃÜÑ¹Ëõ£¬emacs ×Ô¶¯½âÑ¹ºÍÑ¹Ëõ¡£
+;; ç»å¸¸ç¼–è¾‘çš„æ”¾åœ¨ UbuntuOne.emacs-online è‡ªåŠ¨åŒæ­¥ã€‚
+;; ä¸å¸¸å˜åŒ–å’Œä¸éœ€è¦å„åœ°åŒæ­¥çš„å†…å®¹æ”¾åœ¨ emacs-local, æœ‰æ”¹å˜æ—¶ç”¨å‹ç¼©æ–‡ä»¶é€šè¿‡ç½‘ç›˜ä¼ é€’ã€‚
+;; åŠ å¯†å‹ç¼©ï¼Œemacs è‡ªåŠ¨è§£å‹å’Œå‹ç¼©ã€‚
 
 ;; cp ../win/jslint.bat ~/.emacs.d/
 

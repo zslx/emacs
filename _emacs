@@ -5,9 +5,6 @@
 ;;; Time-stamp: <zsl 12/11/2008 17:41:18>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;以上是time stamp，后面将有详细说明
-;; 2016-05-17 14:05:03 修改, 上传 github
-;; GNU ELPA (M-x list-packages).
-;; js2-mode undo-tree
 
 ;;设置书签文件，默认~/.emacs.bmk，把emacs的文件尽量放在一个文件夹，方便管理。
 (setq bookmark-default-file (concat edatas system-name "-" user-login-name "-" (format-time-string "%Y-%m" (current-time)) "-emacs.bmk"))
