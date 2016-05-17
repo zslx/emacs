@@ -1,0 +1,187 @@
+;; -*- mode: lisp -*-
+
+10 style 色彩和字体 color font ,保护眼睛
+(load "zsl-fonts.el")
+;; (setq-default line-spacing 2) ;行距
+(require 'color-theme) ;;; include "emacs-goodies-el"
+(color-theme-initialize)
+(color-theme-arjen)
+
+;; 增强 find-file switch-to-buffer 相关功能
+(ido-mode t)
+;; 使用的 ibuffer ;; ibuffer-other-window
+(zsl-global-set-key (kbd "C-x C-b") 'ibuffer t)
+(zsl-global-set-key (kbd "M-x") 'smex t)
+
+myelisp/zsl-functions.el
+;; M-o | C-x o
+(zsl-global-set-key [(meta  o)] 'other-window t)
+;; (zsl-global-set-key (kbd "M-O") 'other-frame)
+(zsl-global-set-key (kbd "C-x B") 'switch-to-buffer-other-frame)
+
+3 逐行向上滚动内容
+;; 屏幕滚动光标不动 M-p, M-n
+(zsl-global-set-key [(meta n)] (lambda (&optional n) (interactive "p") (scroll-up (or n 1))))
+(zsl-global-set-key [(meta p)] (lambda (&optional n) (interactive "p") (scroll-down (or n 1))))
+
+11 load-path path 程序目录bin，源码目录src，扩展目录[self,other]，学习目录study，工作目录work，tmp
+  自动获取，根据运行文件的所在位置。
+(format "%S" exec-path)
+dot.emacs dircfg.el
+
+14 关闭删除文件 C-x k RET
+(zsl-global-set-key "\C-x\C-d" (lambda () (interactive) (kill-buffer (current-buffer))) t)
+
+绑定 key sequence 之前,先用 C-h c 看看默认绑定的是什么。
+<f9> undefined
+首先把这个常用的操作 'C-h c' 绑定到 <f9> :
+(zsl-global-set-key [f9] 'describe-key-briefly)
+(zsl-global-set-key [f8] 'describe-function)
+
+从○开始，逐一添加需要的功能和特性，
+1 多 frame 之间的切换， other-frame C-x 5 o 常用，绑定到一个更快捷的键。
+;; 需要连续操作的命令，以及 windows 系统的 Alt-TAB
+(zsl-global-set-key (kbd "M-O") 'other-frame)
+
+2 无论光标位置，在当前行的前面插入行，后面插入行
+;; 前面插入行 M-RET, 后面插入行 C-RET, RET, 还有 C-j, M-j, C-o,
+(zsl-global-set-key (kbd "<C-return>")  '(lambda () (interactive) (progn (move-end-of-line nil) (newline nil))))
+(zsl-global-set-key  (kbd "<M-return>") '(lambda () (interactive) (progn (move-beginning-of-line nil) (open-line 1))))
+
+4 删除多余的空格, 删除行尾的空白
+M-SPC just-one-space  M-\ delete-horizontal-space
+
+Macro:
+
+C-n			;; next-line
+C-e			;; move-end-of-line
+M-\			;; delete-horizontal-space
+
+M-x read-kbd-macro  Read the region as a keyboard macro definition.
+
+C-x C-k e edit-kbd-macro
+M-x insert-kbd-macro
+(setq last-kbd-macro
+   [?\C-n ?\C-e ?\M-\\])
+
+eg.
+C-n
+C-o
+M-8 *
+
+;; key binding, key macro, elisp
+
+5 C-z suspend-frame 不常用，重定义作为自定义快捷键的前缀。
+;; C-z 是可以好好利用的一个按键。
+;;默认的 Ctrl-z 是 suspend-emacs，在X中极少用到，而且还有 (C-x C-z) suspend-frame
+(define-prefix-command 'ctl-z-map) ;;将 Ctrl-z 作为自定义键绑定的前缀
+(zsl-global-set-key (kbd "C-z") 'ctl-z-map t)
+
+
+6 可以安全重绑定的快捷键, Good Key Choices
+*1* F5 to F9. Other function keys are also good choices if you don't use their default actions. (To know what are the defaults, see: Emacs's Keybinding Layout.)
+
+*2* Any “Ctrl+‹Function Key›”. “Alt+‹Function Key›” and “Shift+‹Function Key›” are also good.
+
+*3* Any “Ctrl+‹number›” is a good choice. “Alt+‹number›” is also good. By default, they call digit-argument, which is rarely used.
+
+7 multiple frame & window & buffer & file
+最大化，横向和纵向的伸缩，frame移动，切换和跳转，创建和关闭
+(zsl-global-set-key [C-f10] 'my-toggle-fullscreen)
+(zsl-global-set-key [M-f4] 'delete-frame) ;; 与 windows 系统快捷键一致 Alt-<f4>
+
+;; 快速切换 buffer, ido-switch-buffer 基本能满足所有需求
+(defun exchange-buffer-current-recent ()
+  "zsl at 2013.08.10 22:25"
+  (interactive)
+  ;; (set-buffer (other-buffer)) ;; ??
+  (switch-to-buffer (other-buffer)) ;; 切换到最近使用的buffer
+)
+(zsl-global-set-key (kbd "C-z C-z") 'exchange-buffer-current-recent)
+(zsl-global-set-key (kbd "C-z z") 'exchange-buffer-current-recent)
+
+;; (zsl-global-set-key (kbd "C-z z") 'previous-user-buffer)
+;; (zsl-global-set-key (kbd "C-z C-z") 'next-user-buffer)
+;; (zsl-global-set-key [C-left] 'previous-buffer t)
+;; (zsl-global-set-key [C-right] 'next-buffer t)
+
+;; function from "frame-cmds.el"
+(zsl-global-set-key [(meta up)]            'move-frame-up)
+(zsl-global-set-key [(meta down)]          'move-frame-down)
+(zsl-global-set-key [(meta left)]          'move-frame-left t)
+(zsl-global-set-key [(meta right)]         'move-frame-right t)
+
+;; (global-set-key [(control home)]         'move-frame-to-screen-top-left)
+(zsl-global-set-key [(control down)]       'enlarge-frame t)
+(zsl-global-set-key [(control up)]         'shrink-frame t)
+(zsl-global-set-key [(control right)]      'enlarge-frame-horizontally t)
+(zsl-global-set-key [(control left)]       'shrink-frame-horizontally t)
+
+8 复制光标所在行 C-w
+把 Alt-w 变的更聪明一些(advice dwim)，当没有激活的区域时就复制当前的一整行呢:
+(defadvice kill-ring-save ...)
+
+
+9 ido-mode  emacs 默认就有，增强 find-file switch-to-buffer 相关功能
+;; Interactive substring matching
+局部匹配
+;; Hidden buffers and files
+隐藏内容不显示在提示列表
+;; Additional functionality
+C-x b, C-k; C-x C-f, C-k; C-x b, C-f, C-b
+;; Prefix matching
+C-p
+;; Flexible matching
+ido-enable-flex-matching
+;; Regexp matching
+C-t ido-enable-regexp
+
+;; Customization ido, minibuffer
+resize-mini-windows
+max-mini-window-height
+ido-max-window-height
+(setq ido-max-prospects 24)
+
+(ido-mode t)
+
+(load "smex") ;; M-x ido一样提示
+
+req
+删除整行，无论光标在什么位置；删除光标到行尾，删除光标到行首。
+
+12 M-/ dabbrev-expand  M-? 查找补全提示时，不只搜索当前打开的 buffer。
+;; 补全命令, like M-/ but power more
+(zsl-global-set-key (kbd "M-?") 'hippie-expand)
+
+(insert (format "\n\n%S\n" hippie-expand-try-functions-list))
+
+(try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol)
+
+
+13 M-; common-dwim => qiang-comment-dwim-line ;; 更智能一些
+
+0xf 其他重要设置
+jerry-basic.el
+
+;;当指针到一个括号时，自动显示所匹配的另一个括号
+(show-paren-mode 1)
+
+;;改变emacs标题栏的标题,显示buffer的对应文件全路径
+(setq frame-title-format
+      (list '(:eval (if (buffer-file-name) (buffer-file-name) (buffer-name))) " %I %i"))
+
+;;使用C-k删掉point到行末的所有东西,包括换行符
+(setq-default kill-whole-line t)
+
+;;设定删除保存记录为200，可以方便以后无限恢复
+(setq kill-ring-max 200)
+
+0xa find, grep, diff 文件的查找和比较
+
+
+0xb
+(format "%-20.10s|" "1234567890xf")
+(format "%-10.30s|" "1234567890xf")
+
+0xc buffer-read-only
+;; C-x C-q toggle-read-only
