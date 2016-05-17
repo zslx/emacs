@@ -1,26 +1,15 @@
 ;; 15分钟学会Emacs Lisp (v0.2a)
 ;;（作者：bzg，https://github.com/bzg 
 ;;  译者：lichenbo，http://douban.com/people/lichenbo）
-;;
-;; 请先阅读Peter Norvig的一篇好文:
-;; http://norvig.com/21-days.html
-;; （译者注：中文版请见http://blog.youxu.info/21-days/）
-;;
-;; 之后安装GNU Emacs 24.3:
-;;
+;; modified by zsl 2016-05-17 16:58:40
+;; 
 ;; Debian: apt-get install emacs (视具体发行版而定)
 ;; MacOSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
 ;; Windows: http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
 ;;
 ;; 更多信息可以在这里找到:
 ;; http://www.gnu.org/software/emacs/#Obtaining
- 
-;; 很重要的警告:
-;;
-;; 按照这个教程来学习并不会对你的电脑有任何损坏
-;; 除非你自己在学习的过程中愤怒地把它砸了
-;; 如果出现了这种情况，我不会承担任何责任
-;;
+;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;; 打开emacs
