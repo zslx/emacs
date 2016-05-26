@@ -58,7 +58,7 @@
 
 ;; (when (eq system-type 'gnu/linux)
 ;;   (progn
-;; 	(require 'zsl-eim) ;; emacs input method
+(require 'zsl-eim) ;; emacs input method
 ;; 	(load "zsl-sdcv.el") ;; 查词典
 ;; 	;;   (require 'jerry-cedet)
 ;; 	;;	 (load "zsl-cxx-mode")

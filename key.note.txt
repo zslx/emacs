@@ -1,4 +1,6 @@
 ;; -*- mode: lisp -*-
+2016-05-26 21:57:53 交换键盘 tab=> left-ctrl, 添加 eim 输入法
+https://github.com/zslx/emacs-eim.git
 
 10 style 色彩和字体 color font ,保护眼睛
 (load "zsl-fonts.el")

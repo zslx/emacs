@@ -4,6 +4,19 @@
 
 ; (add2load_path "leim") ;include emacs
 
+;; Begin 2016-05-26 22:34:32 
+(add-to-list 'load-path "~/emacs-eim")
+(autoload 'eim-use-package "eim" "Another emacs input method")
+;; Tooltip 暂时还不好用
+(setq eim-use-tooltip nil)
+(register-input-method "eim-py" "euc-cn" 'eim-use-package "拼音" "汉字拼音输入法" "py.txt")
+
+;; ;; 用 ; 暂时输入英文
+;; (require 'eim-extra)
+;; (global-set-key ";" 'eim-insert-ascii)
+
+;; End  2016-05-26 22:34:37
+
 ;; 第二个使用的输入法, linux 下集成操作系统的输入法，缺点是占用了 C-space
 ;; ibus
 
