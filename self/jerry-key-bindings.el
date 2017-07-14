@@ -123,21 +123,21 @@
 
 ;;; 不常用的 =======================================================
 
-;; for elisp
-;;让当前buffer生效的快捷方式
-(add-hook 'emacs-lisp-mode-hook
-		  (lambda () (progn
-					   (local-set-key "\C-ze" 'eval-buffer)
-					   ;;编译当前emacs-lisp源码为elc
-					   ;; (local-set-key (kbd "C-z b") 'emacs-lisp-byte-compile)
-					   ;; (local-set-key (kbd "C-c b") (lambda () (interactive) (byte-compile-file buffer-file-name)))
-					   ;;在编译后并加载
-					   ;;(local-set-key (kbd "C-z x") 'emacs-lisp-byte-compile-and-load)
-					   ;; (local-set-key (kbd "M-<up>") 'backward-up-list)
-					   ;; (local-set-key (kbd "M-<down>") 'down-list)
-					   ;; (local-set-key (kbd "M-<left>") 'backward-sexp)
-					   ;; (local-set-key (kbd "M-<right>") 'forward-sexp)
-					   )))
+;; ;; for elisp
+;; ;;让当前buffer生效的快捷方式
+;; (add-hook 'emacs-lisp-mode-hook
+;; 		  (lambda () (progn
+;; 					   (local-set-key "\C-ze" 'eval-buffer)
+;; 					   ;;编译当前emacs-lisp源码为elc
+;; 					   ;; (local-set-key (kbd "C-z b") 'emacs-lisp-byte-compile)
+;; 					   ;; (local-set-key (kbd "C-c b") (lambda () (interactive) (byte-compile-file buffer-file-name)))
+;; 					   ;;在编译后并加载
+;; 					   ;;(local-set-key (kbd "C-z x") 'emacs-lisp-byte-compile-and-load)
+;; 					   ;; (local-set-key (kbd "M-<up>") 'backward-up-list)
+;; 					   ;; (local-set-key (kbd "M-<down>") 'down-list)
+;; 					   ;; (local-set-key (kbd "M-<left>") 'backward-sexp)
+;; 					   ;; (local-set-key (kbd "M-<right>") 'forward-sexp)
+;; 					   )))
 
 ;; (global-set-key (kbd "H-s") (lambda () (interactive) (insert "[]") (backward-char 1)))
 ;; (global-set-key (kbd "s-d") (lambda () (interactive) (insert "()") (backward-char 1)))
@@ -149,16 +149,16 @@
 ;; C-x C-= \ C-x C-- text-scale-adjust , font size
 
 ;;类似vi的f(x)命令，使用方法为C-c a "x",x为任意字符,找第几个字符按几次
-(define-key global-map (kbd "C-z t") 'wy-go-to-char)
+;(define-key global-map (kbd "C-z t") 'wy-go-to-char)
 ;; `M-g g',`M-g M-g' : goto line number, char count
 (zsl-global-set-key "\M-gc" 'goto-char) ; M-g c : goto-char 是从buffer开头计算的
 
 ;; vim:ga 查看字符信息
 ;; 字节位置， 相对于字符位置 "C-x =" what-cursor-position
-(zsl-global-set-key (kbd "C-z =") 'my-get-bytes-pos)
+;(zsl-global-set-key (kbd "C-z =") 'my-get-bytes-pos)
 
 ;; 开/关菜单
-(zsl-global-set-key [f10] 'menu-bar-mode t)
+;(zsl-global-set-key [f10] 'menu-bar-mode t)
 ;; (zsl-global-set-key [C-f10] 'my-fullscreen)
 
 (zsl-global-set-key [C-f10] 'my-toggle-fullscreen)
@@ -166,11 +166,12 @@
 
 ;;用Emacs时常用多个窗口，窗口之间的移动很常见 M-o
 (zsl-global-set-key [(meta  o)] 'other-window t)
-;; 跳转到另一个 window, C-x o ;; 类似 vim h j k l
-(zsl-global-set-key "\C-z\C-h" 'windmove-left)
-(zsl-global-set-key "\C-z\C-j" 'windmove-down)
-(zsl-global-set-key "\C-z\C-k" 'windmove-up)
-(zsl-global-set-key "\C-z\C-l" 'windmove-right)
+
+;; ;; 跳转到另一个 window, C-x o ;; 类似 vim h j k l
+;; (zsl-global-set-key "\C-z\C-h" 'windmove-left)
+;; (zsl-global-set-key "\C-z\C-j" 'windmove-down)
+;; (zsl-global-set-key "\C-z\C-k" 'windmove-up)
+;; (zsl-global-set-key "\C-z\C-l" 'windmove-right)
 
 (zsl-global-set-key (kbd "M-O") 'other-frame) ;需要连续操作的命令
 (zsl-global-set-key (kbd "C-x B") 'switch-to-buffer-other-frame)
@@ -204,22 +205,23 @@
 ;; vim下C-o, C-i这样的键? 就是跳转到刚才待过的地方. "C-x C-x" ,pop-global-mark 不好用!
 ;; 'point-to-register, 'jump-to-register
 ;; list-registers ? register-alist
-(zsl-global-set-key "\C-zr" 'ska-point-to-register)
-(zsl-global-set-key "\C-z\C-s" 'ska-jump-to-register) ;switch point and mark
+;(zsl-global-set-key "\C-zr" 'ska-point-to-register)
+;(zsl-global-set-key "\C-z\C-s" 'ska-jump-to-register) ;switch point and mark
 ;; (require 'recent-jump nil t)			; 增加 require 参数防止找不到插件出错
+
 ;; ann77 的一个 elisp，用于跳转到前一个大幅度跳转的位置。类似于 vim 的 C-o 和 C-i。
-(when (featurep 'recent-jump)
-  (zsl-global-set-key "\C-zr" 'recent-jump-jump-backward)
-  (zsl-global-set-key "\C-zu" 'recent-jump-jump-forward))
+;(when (featurep 'recent-jump)
+;  (zsl-global-set-key "\C-zr" 'recent-jump-jump-backward)
+;  (zsl-global-set-key "\C-zu" 'recent-jump-jump-forward))
 
 ;; 快速切换 buffer
-(zsl-global-set-key (kbd "C-z z") 'previous-user-buffer)
-(zsl-global-set-key (kbd "C-z C-z") 'next-user-buffer)
+;(zsl-global-set-key (kbd "C-z z") 'previous-user-buffer)
+;(zsl-global-set-key (kbd "C-z C-z") 'next-user-buffer)
 
 ;; vim % : C-M-p,C-M-n, C-M-f,C-M-b ;; 跳到配对的括号
 
 ;; show line number, 'setnu-mode in emacs-goodies
-(zsl-global-set-key (kbd "C-z s s") 'linum-mode) ;;打开行号显示,和vi一样的
+;(zsl-global-set-key (kbd "C-z s s") 'linum-mode) ;;打开行号显示,和vi一样的
 
 ;; 补全命令, like M-/ but power more
 (zsl-global-set-key (kbd "M-?") 'hippie-expand)
@@ -230,7 +232,7 @@
 ;; (zsl-global-set-key (kbd "S-SPC") 'set-mark-command)
 
 ;;把speedbar集成到emacs的frame里. Same Frame Speedbar
-(zsl-global-set-key (kbd "C-z s b") 'sr-speedbar-toggle)
+;(zsl-global-set-key (kbd "C-z s b") 'sr-speedbar-toggle)
 
 ;; (define-key global-map "\M-\C-8" 'isearch-forward-word)
 (zsl-global-set-key [?\M-\C-8] 'isearch-forward-word t)
@@ -238,14 +240,14 @@
 ;; (zsl-global-set-key (kbd "C-z C-s") 'search-forward-regexp)
 ;; (zsl-global-set-key (kbd "C-z C-r") 'search-backward-regexp)
 ;;occur使用正则查找,列出一个buffer中匹配的行
-(zsl-global-set-key (kbd "C-z o") 'occur)
+;(zsl-global-set-key (kbd "C-z o") 'occur)
 ;; 精确查找 vim:*#
 ;; Query replace `M-%' query-replace, `C-M-%' 'query-replace-regexp 带正则表达式的搜索
 
-;; vim:gf find-file-at-point:ffap
-(zsl-global-set-key (kbd "C-z g") 'find-file-at-point)
-(zsl-global-set-key (kbd "C-z w") 'ffap-other-window) ;在 eshell 里用
-(zsl-global-set-key (kbd "C-z b") 'zsl-eshell)
+;; ;; vim:gf find-file-at-point:ffap
+;; (zsl-global-set-key (kbd "C-z g") 'find-file-at-point)
+;; (zsl-global-set-key (kbd "C-z w") 'ffap-other-window) ;在 eshell 里用
+;; (zsl-global-set-key (kbd "C-z b") 'zsl-eshell)
 
 ;; vim zt,zb,zz . C-l, M-[n] C-v, C-x z,
 ;; vim-H, M, L这样的键? 就是跳转到屏幕的顶端,中部和底端,M-r,C-l,C-u n C-l.
@@ -265,14 +267,14 @@
 (zsl-global-set-key  (kbd "<M-return>")
 					 '(lambda () (interactive) (progn (move-beginning-of-line nil) (open-line 1))))
 
-;; 创建一个空buffer
-;; (zsl-global-set-key (kbd "C-z n") '(generate-new-buffer-name "new file"))
-(zsl-global-set-key (kbd "C-z n")
-					(lambda () (interactive)
-					  (switch-to-buffer
-					   (get-buffer-create
-						(format-time-string "**buffer%H%M%S%3N" (current-time))
-						))))
+;; ;; 创建一个空buffer
+;; ;; (zsl-global-set-key (kbd "C-z n") '(generate-new-buffer-name "new file"))
+;; (zsl-global-set-key (kbd "C-z n")
+;; 					(lambda () (interactive)
+;; 					  (switch-to-buffer
+;; 					   (get-buffer-create
+;; 						(format-time-string "**buffer%H%M%S%3N" (current-time))
+;; 						))))
 
 ;; 注释region ;;比较常用，来回改的麻烦，还是这个方便
 ;; 'comment-region, comment-line ?
@@ -283,28 +285,28 @@
 (zsl-global-set-key [(meta p)] (lambda (&optional n) (interactive "p") (scroll-down (or n 1))))
 
 ;; M-tab , ispell-complete-word-dict
-(zsl-global-set-key "\C-z\C-f" 'ispell-complete-word)
+;(zsl-global-set-key "\C-z\C-f" 'ispell-complete-word)
 
 ;; 插入日期A
 (zsl-global-set-key
- (kbd "C-z d")
+ (kbd "C-c d")
  (lambda () (interactive)
    (insert (format-time-string "%Y-%m-%d %H:%M:%S " (current-time)))) t)
 
-;; 插入日期B
-(zsl-global-set-key
- (kbd "C-z C-d")
- (lambda () (interactive)
-   ;; (move-beginning-of-line (point))
-   (goto-char 0)
-   ;; (shell-command "date" (point))
-   (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time)))
-   ;; (next-line)
-   (newline)
-   (newline)
-   (previous-line)
-   )
- t)
+;; ;; 插入日期B
+;; (zsl-global-set-key
+;;  (kbd "C-z C-d")
+;;  (lambda () (interactive)
+;;    ;; (move-beginning-of-line (point))
+;;    (goto-char 0)
+;;    ;; (shell-command "date" (point))
+;;    (insert (format-time-string "%Y-%m-%d %H:%M:%S" (current-time)))
+;;    ;; (next-line)
+;;    (newline)
+;;    (newline)
+;;    (previous-line)
+;;    )
+;;  t)
 
 (zsl-global-set-key "\C-x\C-d" (lambda () (interactive) (kill-buffer (current-buffer))) t)
 
@@ -313,12 +315,12 @@
 
 ;; clear 多个空格  M-SPC | M-\ delete-horizontal-space
 ;; (zsl-global-set-key (kbd "C-z c") 'just-one-space)
-(zsl-global-set-key (kbd "C-z c") (lambda () (interactive) (message "%s" buffer-file-coding-system)))
+;(zsl-global-set-key (kbd "C-z c") (lambda () (interactive) (message "%s" buffer-file-coding-system)))
 
 ;; 'M-\' delete-horizontal-space ==> 'C-z c' leim,eim
 ;; (zsl-global-set-key (kbd "M-\\") 'eim-insert-ascii t) ;输入法临时切换
 
-(zsl-global-set-key (kbd "C-z v") 'svn-status)
+;(zsl-global-set-key (kbd "C-z v") 'svn-status)
 
 ;; comment-dwim , do what i mean
 (zsl-global-set-key "\M-;" 'qiang-comment-dwim-line t)
@@ -359,7 +361,7 @@
 (zsl-global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
 ;;; zsl-project-tree.el
 ;(zsl-global-set-key "\C-z\C-e" 'zptree-open) ;explorer
-(zsl-global-set-key "\C-zp" 'zptree-open) ;project
+;(zsl-global-set-key "\C-zp" 'zptree-open) ;project
 
 ;; (zsl-global-set-key (kbd "C-z f") 'zsl-dirtree-at-point)
 ;; ==== end zsl-project-cmd binding ====
@@ -368,7 +370,7 @@
 (load "zsl-hide-show.el")
 (zsl-global-set-key (kbd "C-c H") 'hs-minor-mode)
 
-(zsl-global-set-key "\C-z\C-a" 'beginning-of-line-text)
+;; (zsl-global-set-key "\C-z\C-a" 'beginning-of-line-text)
 
 ;;; mouse keys
 ;; 默认配置: 用鼠标左键 click 一个位置，可以以移动光标到这个位置，这是最基本，也是最自然的功能了。
@@ -390,9 +392,9 @@
 ;; (global-set-key [M-down-mouse-1] 'mouse-drag-secondary-pasting)
 ;; (global-set-key [M-S-down-mouse-1] 'mouse-drag-secondary-moving)
 
-(zsl-global-set-key (kbd "C-z s h") 'highlight-symbol-at-point t)
-(zsl-global-set-key (kbd "C-z s j") 'highlight-symbol-next)
-(zsl-global-set-key (kbd "C-z s r") 'highlight-symbol-remove-all)
+;; (zsl-global-set-key (kbd "C-z s h") 'highlight-symbol-at-point t)
+;; (zsl-global-set-key (kbd "C-z s j") 'highlight-symbol-next)
+;; (zsl-global-set-key (kbd "C-z s r") 'highlight-symbol-remove-all)
 
 ;; (zsl-global-set-key (kbd "M-<f6>") ')
 ;; (zsl-global-set-key (kbd "C-<f6>") ')
@@ -414,10 +416,10 @@
 (zsl-global-set-key "\C-c\C-t" 'zsl-project-ffap t)
 
 ;; 使用的ibuffer
-(zsl-global-set-key (kbd "C-x C-b") 'ibuffer t) ;; ibuffer-other-window
+;(zsl-global-set-key (kbd "C-x C-b") 'ibuffer t) ;; ibuffer-other-window
 (zsl-global-set-key (kbd "M-x") 'smex t)
 
-(zsl-global-set-key "\C-zk" (lambda (n) (interactive "p") (kill-forward-chars (or n 1))) t)
+;(zsl-global-set-key "\C-zk" (lambda (n) (interactive "p") (kill-forward-chars (or n 1))) t)
 
 (provide 'jerry-key-bindings)			; help provide
 ;;; jerry-key-bindings.el ends here

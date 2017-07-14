@@ -5,8 +5,8 @@
 
 ;; C-z 是可以好好利用的一个按键。
 ;;默认的 Ctrl-z 是 suspend-emacs，在X中极少用到，而且还有 (C-x C-z) suspend-frame
-(define-prefix-command 'ctl-z-map) ;;将 Ctrl-z 作为自定义键绑定的前缀
-(zsl-global-set-key (kbd "C-z") 'ctl-z-map t)
+;(define-prefix-command 'ctl-z-map) ;;将 Ctrl-z 作为自定义键绑定的前缀
+;(zsl-global-set-key (kbd "C-z") 'ctl-z-map t)
 
 ;; "C-c m"是未定义的前缀，要先定义一下
 ;;(define-prefix-command 'ctl-cm-map)
@@ -61,12 +61,12 @@
 ;;;外观设置
 (global-hl-line-mode 1) ;; highlight current line
 ;; (set-face-background 'hl-line "#222222") ;"#310"
-(set-face-background 'hl-line "#347")
+;(set-face-background 'hl-line "#347")
 
 ;;;去掉工具栏
 (tool-bar-mode -1)
 ;;;将F10绑定为显示菜单栏，万一什么东西忘了,菜单栏可以摁F10调出，再摁F10就去掉菜单
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 ;;不要滚动栏，现在都用滚轴鼠标了
 ;; (scroll-bar-mode nil) < v24.1
 (scroll-bar-mode 0)
@@ -81,7 +81,7 @@
 ;; mode-line-format
 ;;在minibuffer上面可以显示列号,行号
 (column-number-mode t)
-(line-number-mode t)
+;(line-number-mode t)
 
 ;; ;;时间显示设置
 ;; (setq display-time-24hr-format t) ;;使用24小时制
@@ -105,7 +105,7 @@
 ;; (setq mode-line-format mlf_bk)
 
 ;;显示默认的文档的宽度，看起来比较舒服？ latex90分钟介绍里说66是最大限度,看来不错.
-(setq default-fill-column 100)
+;(setq default-fill-column 100)
 
 ;; 不用 TAB 字符来indent, 这会引起很多奇怪的错误。编辑 Makefile 的时候也不用担心，
 ;; makefile-mode 会把 TAB 键设置成真正的 TAB 字符，并且加亮显示的。
@@ -150,7 +150,7 @@
 ;;当指针到一个括号时，自动显示所匹配的另一个括号
 (show-paren-mode 1)
 ;;去掉烦人的警告铃声 ,没有提示音，也不闪屏 (setq ring-bell-function 'ignore)
-(setq visible-bell nil)
+;(setq visible-bell nil)
 
 ;;当鼠标移动的时候自动转换frame，window或者minibuffer
 ;(setq mouse-autoselect-window t)
@@ -271,7 +271,7 @@
 (setq bookmark-save-flag 1)
 
 ;; narrow功能, 隐藏和显示不需要的部分： "C-x n n" narrow-to-region,"C-x n w" widen.
-(put 'narrow-to-region 'disabled nil) ;; C-x nn, C-xnw
+;(put 'narrow-to-region 'disabled nil) ;; C-x nn, C-xnw
 
 ;;custome的风格改为单一的树状风格 ;(setq custom-buffer-style 'brackets)
 ;;发送mail的时候使用fortune添加amuses ;(add-hook 'mail-setup-hook 'spook)
@@ -288,16 +288,16 @@
 ;(global-set-key ";" 'eim-insert-ascii)
 ;(set-input-method "eim-py")
 
-;; 远程编辑 tramp
-(setq tramp-default-method "ssh")
-(setq tramp-default-user "zsl")
-(setq tramp-default-host "192.168.1.10")
+;; ;; 远程编辑 tramp
+;; (setq tramp-default-method "ssh")
+;; (setq tramp-default-user "zsl")
+;; (setq tramp-default-host "192.168.1.10")
 
 ;; set case sensitive
-(setq case-fold-search nil)
+;(setq case-fold-search nil)
 
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'upcase-region 'disabled nil)
+;(put 'dired-find-alternate-file 'disabled nil)
+;(put 'upcase-region 'disabled nil)
 
 ;; ffip: find file in project
 ;; (autoload 'find-file-in-project "find-file-in-project" "Find file in project." t)

@@ -29,12 +29,12 @@
 
 ;; `M-*' 通常有 `ESC *' 对应; 当 Alt-* 被占用时，非常有用了:)
 
-(defun open-by-ie()
-  (interactive)
-  (let ((url (buffer-file-name)))
-  ;; (call-process "C:/Program Files/Internet Explorer/iexplore.exe" nil 0 nil url)
-  (call-process "~/c/Program Files/Internet Explorer/iexplore.exe" nil 0 nil url)
-  ))
+;; (defun open-by-ie()
+;;   (interactive)
+;;   (let ((url (buffer-file-name)))
+;;   ;; (call-process "C:/Program Files/Internet Explorer/iexplore.exe" nil 0 nil url)
+;;   (call-process "~/c/Program Files/Internet Explorer/iexplore.exe" nil 0 nil url)
+;;   ))
 
 
 ;; (call-process
@@ -56,21 +56,21 @@
 ;; 看看 load-path
 ;;(format "%S" load-path)
 
-(defun ska-point-to-register()
-  "Store cursorposition _fast_ in a register.
- Use ska-jump-to-register to jump back to the stored position."
-  (interactive)
-  (setq zmacs-region-stays t)
-  (point-to-register 8))
+;; (defun ska-point-to-register()
+;;   "Store cursorposition _fast_ in a register.
+;;  Use ska-jump-to-register to jump back to the stored position."
+;;   (interactive)
+;;   (setq zmacs-region-stays t)
+;;   (point-to-register 8))
 
-(defun ska-jump-to-register()
-  "Switches between current cursorposition and
- position that was stored with ska-point-to-register."
-  (interactive)
-  (setq zmacs-region-stays t)
-  (let ((tmp (point-marker)))
-	(jump-to-register 8)
-	(set-register 8 tmp)))
+;; (defun ska-jump-to-register()
+;;   "Switches between current cursorposition and
+;;  position that was stored with ska-point-to-register."
+;;   (interactive)
+;;   (setq zmacs-region-stays t)
+;;   (let ((tmp (point-marker)))
+;; 	(jump-to-register 8)
+;; 	(set-register 8 tmp)))
 
 (defun wy-go-to-char (n char)
   "Move forward to Nth occurence of CHAR.

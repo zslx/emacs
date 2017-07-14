@@ -26,15 +26,6 @@
 
 (defun add2load_path (base path) (add-to-list 'load-path (concat base path)))
 
-;; ;; load-path exec-path
-;; ;; 添加到 Windows的 PATH 变量，多个路径用分号分割， "d:/cygwin64/bin"
-;; (if (file-directory-p "c:/cygwin64/bin")
-;; 	(progn
-;; 	  (add-to-list 'exec-path "c:/cygwin64/bin")
-;; 	  ;; (add-to-list 'exec-path "d:/cygwin64/user/sbin")
-;; 	  ))
-
-;(setq load-path (cons (concat elib "xcscope")  load-path))
 
 ;(when (eq system-type 'gnu/linux)
 ;  (setq load-path (cons "/usr/local/share/gtags" load-path)))
@@ -43,7 +34,7 @@
 ;(add2load_path "libs/ffip")
 
 ;; 编辑混合了 html php js 等代码的文件
-(add2load_path elib "multi-web-mode")
+;(add2load_path elib "multi-web-mode")
 ;; (add2load_path "php")
 
 ;; emacs source code

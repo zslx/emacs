@@ -15,9 +15,13 @@
     (load custom-file) ;; 必须执行才有效    
   (write-file custom-file))
 
-;;配置文件很长，按类分别放在不同的文件里，方便管理
-(load "zsl-info.el")
-(load "zsl-fonts.el")
+
+;(put 'scroll-left 'disabled nil)
+;(setq-default indent-tabs-mode nil)
+
+;; 配置文件很长，按类分别放在不同的文件里，方便管理
+;(load "zsl-info.el")
+;; (load "zsl-fonts.el") ; default is good.
 (load "zsl-functions")
 (load "jerry-basic")
 ;; (load "zsl-async-process.el")
@@ -54,7 +58,7 @@
 (require 'unicad) ;auto detect code
 
 ;; (require 'zsl-auto-complete)
-(require 'zsl-vim)
+;(require 'zsl-vim)
 
 ;; (when (eq system-type 'gnu/linux)
 ;;   (progn
@@ -65,7 +69,7 @@
 ;; 	))
 
 ;(load "zsl-cxx-mode")
-(load "zsl-webdev")
+;(load "zsl-webdev")
 ;; php-mode
 
 ;; ;; Project Management for Emacs

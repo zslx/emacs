@@ -5,7 +5,7 @@
 ; (add2load_path "leim") ;include emacs
 
 ;; Begin 2016-05-26 22:34:32 
-(add-to-list 'load-path "~/emacs-eim")
+(add-to-list 'load-path "~/github/emacs-eim")
 (autoload 'eim-use-package "eim" "Another emacs input method")
 ;; Tooltip 暂时还不好用
 (setq eim-use-tooltip nil)
